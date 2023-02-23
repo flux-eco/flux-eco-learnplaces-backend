@@ -1,0 +1,8 @@
+{
+  "bindings": {
+    "backendServer": {
+      "port": 3000,
+      "url": "http://localhost"
+    }
+  }
+}

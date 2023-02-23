@@ -1,10 +1,10 @@
 /*
-!app/
+!app
 !.gitignore
+!CHANGELOG.md
 !config-template.mjs
 !LICENSE
-!README.md
+!metadata.json
 !package.json
 !package-lock.json
-!metadata.json
-!CHANGELOG.md
+!README.md

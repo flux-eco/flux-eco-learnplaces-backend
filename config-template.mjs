@@ -5,6 +5,3 @@ export const mysqlConfig = {
     password: 'password',
     database: 'my_database'
 };
-export const serverConfig = {
-    port: 3000
-};
