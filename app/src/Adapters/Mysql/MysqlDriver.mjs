@@ -1,27 +1,43 @@
 const mysql = await import('mysql');
 
 export class MysqlDriver {
-    #config;
+    /**
+     * @var {MysqlDatabaseConfigs}
+     */
+    #configs;
+    #connection;
 
-    constructor(config) {
-        this.#config = config;
+    /**
+     * @param {MysqlDatabaseConfigs} configs
+     */
+    constructor(configs) {
+        this.#configs = configs;
     }
 
     /**
-     * @param config
+     * @param {MysqlDatabaseConfigs} configs
      * @return {Promise<MysqlDriver>}
      */
-    static async new(config) {
-        return new MysqlDriver(config)
+    static async new(configs) {
+        return new MysqlDriver(configs)
     }
 
+    /**
+     * @return {Promise<Connection>}
+     */
     async connect() {
-        this.connection = mysql.createConnection(this.#config);
-        await this.connection.connect((error) => {console.log(error)});
-        return this.connection;
+        this.#connection = await mysql.createConnection(
+            this.#configs
+        );
+        await this.#connection.connect((error) => {
+            console.log(error);
+        });
+        return this.#connection;
     }
 
     async disconnect() {
-        this.connection.end((error) => {});
+        this.#connection.end((error) => {
+            console.log(error);
+        });
     }
 }

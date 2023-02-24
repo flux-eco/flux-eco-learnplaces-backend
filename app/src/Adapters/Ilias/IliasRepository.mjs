@@ -1,4 +1,4 @@
-//todo add an additional connection to the ilias resstApi
+//todo add an additional connection to the ilias restApi
 export class IliasRepository {
     #connection;
 

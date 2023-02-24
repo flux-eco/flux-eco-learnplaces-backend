@@ -2,9 +2,9 @@
 !app
 !.gitignore
 !CHANGELOG.md
-!config-template.mjs
 !LICENSE
 !metadata.json
 !package.json
 !package-lock.json
+!provideEnvironmentsTemplate.sh
 !README.md

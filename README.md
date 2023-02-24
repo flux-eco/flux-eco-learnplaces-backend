@@ -16,23 +16,23 @@ npm install pm2 -g
 ```
 
 ## Configuration
-Copy the config-template.mjs file to config.mjs and adapt it for your needs.
+Copy the config-template.mjs file to env.mjs and adapt it for your needs.
 
 Copy the app/definitions/flux-eco-definition-template.json and adapt it for your needs.
 
 
 ## Operate
 
-**Start the server using PM2 and the provided learnplaces-backend-server.mjs**
+**Start the server using PM2 and the provided definition.json**
 
 ```
-pm2 learnplaces-backend-server.mjs
+pm2 start definition.json
 ```
 
 **To stop the Node.js Manager, use the following command:**
 
 ```
-pm2 stop learnplaces-backend-server
+pm2 stop definition.json
 ```
 
 ## pm2 state manager
