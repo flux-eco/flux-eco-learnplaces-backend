@@ -60,6 +60,20 @@ cheatsheet: https://devhints.io/pm2
 └─────┴────────────────────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
 ```
 
+## Configuration
+
+**flux-eco-learnplaces-backend** can be configured using environment variables. The following environment variables are available
+for configuration. If not set, the following default values will be used
+- FLUX_ECO_LEARNPLACES_BACKEND_ENDPOINTS_HTTP_ALLOWED_IPS= //e.g. 192.168.1.1, 192.168.1.2, 192.168.1.3 | if not set the backend will not be accessible
+- FLUX_ECO_LEARNPLACES_BACKEND_ENDPOINTS_HTTP_PROTOCOL=http
+- FLUX_ECO_LEARNPLACES_BACKEND_ENDPOINTS_HTTP_HOST=localhost
+- FLUX_ECO_LEARNPLACES_BACKEND_ENDPOINTS_HTTP_PORT=3200
+- FLUX_ECO_LEARNPLACES_BACKEND_DATABASE_MYSQL_HOST=localhost
+- FLUX_ECO_LEARNPLACES_BACKEND_DATABASE_MYSQL_PORT=3333
+- FLUX_ECO_LEARNPLACES_BACKEND_DATABASE_MYSQL_NAME=ilias
+- FLUX_ECO_LEARNPLACES_BACKEND_DATABASE_MYSQL_USER=ilias
+- FLUX_ECO_LEARNPLACES_BACKEND_DATABASE_MYSQL_PASSWORD=sdflk2089234dsfalkj3ED
+
 ## Logs
 
 Or use the pm2 logs

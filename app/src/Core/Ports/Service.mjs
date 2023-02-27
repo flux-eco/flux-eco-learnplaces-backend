@@ -4,34 +4,29 @@
  * @property {string} nodeId
  * @property {object} nodeData
  */
+import {IliasMysqlRepository} from "../../Adapters/Ilias/IliasMysqlRepository.mjs";
 
-/**
- * @typedef {object} Repository
- * @property {function(handleResponse)} getRepositoryTree
- */
+
 export class Service {
 
     /**
-     * @param {Repository} repository
+     * @param {IliasMysqlRepository} iliasMysqlRepository
      * @return {Service}
      */
-    constructor(repository) {
-        this.repository = repository;
+    constructor(iliasMysqlRepository) {
+        this.iliasMysqlRepository = iliasMysqlRepository;
     }
 
     /**
-     * @param {Repository} repository
+     * @param {IliasMysqlRepository} iliasMysqlRepository
      * @return {Service}
      */
-    static async new(repository) {
-        return new Service(repository)
+    static async new(iliasMysqlRepository) {
+        return new Service(iliasMysqlRepository)
     }
 
-    async getRepositoryTree(handleResponse) {
-        try {
-           return this.repository.getRepositoryTree(handleResponse);
-        } catch (error) {
-            throw new Error(`Failed to get repository tree: ${error.message}`);
-        }
+    async getRepositoryTree() {
+        //todo
+        return this.iliasMysqlRepository.getRepositoryTree();
     }
 }
