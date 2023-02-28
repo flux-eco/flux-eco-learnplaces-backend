@@ -1,4 +1,4 @@
-class Api {
+export class Api {
     /**
      * @param {string, function} boundActions
      */
@@ -13,7 +13,6 @@ class Api {
      */
     constructor(boundActions) {
         this.#boundActions = boundActions
-        this.#repositoryTreeHandler = RepositoryTreeHandler.new();
     }
 
     /**
@@ -29,9 +28,7 @@ class Api {
      * @returns {Promise<Object>}
      */
     async getRepositoryTree() {
-        return this.repositoryTreeHandler.getRepositoryTree(this.#boundActions.getRepositoryTree);
+
     }
+
 }
-
-module.exports = Api;
-

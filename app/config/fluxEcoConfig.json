@@ -15,26 +15,26 @@
         "LoggingMiddleware",
         "ErrorHandlingMiddleware"
       ],
-      "actions": [
-        {
+      "actions": {
+        "getRepositoryTree": {
           "method": "GET",
           "path": "/getRepositoryTree",
-          "actionCallable": "getRepositoryTree"
+          "actionType": "boundActionCallable"
         }
-      ]
-    }
-  },
-  "bindings": {
-    "iliasDatabase": {
-      "serverConfig": {
-        "port": "${DATABASE_PORT}",
-        "host": "${DATABASE_HOST}",
-        "database": "${DATABASE_DATABASE}",
-        "password": "${DATABASE_PASSWORD}",
-        "username": "${DATABASE_USERNAME}"
-      },
-      "boundActions": {
-        "getRepositoryTree": "handleQuery"
+      }
+    },
+    "bindings": {
+      "iliasDatabase": {
+        "serverConfig": {
+          "port": "${DATABASE_PORT}",
+          "host": "${DATABASE_HOST}",
+          "database": "${DATABASE_DATABASE}",
+          "password": "${DATABASE_PASSWORD}",
+          "username": "${DATABASE_USERNAME}"
+        },
+        "boundActions": {
+          "getRepositoryTree": "handleRepositoryTreeQuery"
+        }
       }
     }
   }
