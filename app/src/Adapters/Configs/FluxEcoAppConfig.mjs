@@ -7,7 +7,7 @@
 
 /**
  * @typedef {Object} FluxEcoHttpEndpoint
- * @property {string} serverConfigId - The ID of the server configuration for the HTTP endpoint.
+ * @property {string} serverConfigId - The ID of the httpBackend configuration for the HTTP endpoint.
  * @property {string} policyConfigId - The ID of the policy configuration for the HTTP endpoint.
  * @property {Object<string, FluxEcoHttpEndpointAction>} actions - The API actions associated with this endpoint.
  */
@@ -26,8 +26,8 @@
 
 /**
  * @typedef {Object} FluxEcoBinding
- * @property {string} serverConfigId - The ID of the server configuration for the bound server.
- * @property {Object<string, FluxEcoBindingAction>} actions - The bound actions associated with the server.
+ * @property {string} serverConfigId - The ID of the httpBackend configuration for the bound httpBackend.
+ * @property {Object<string, FluxEcoBindingAction>} actions - The bound actions associated with the httpBackend.
  */
 
 /**
@@ -54,7 +54,7 @@
  * The configuration for the REST API binding.
  * @typedef {Object} HttpServerConfig
  * @property {string} protocol - The protocol to use (http or https).
- * @property {string} host - The host name or IP address to bind the server to.
+ * @property {string} host - The host name or IP address to bind the httpBackend to.
  * @property {number} port - The port number to listen on.
  * @property {string} basePath - The base URL for the binding.
  * @property {string} user - User to authenticate as
@@ -64,7 +64,7 @@
 
 /**
  * @typedef {Object}  DatabaseServerConfig
- * @property {string} host - Hostname or IP address of the database server
+ * @property {string} host - Hostname or IP address of the database httpBackend
  * @property {number} port - Port number to use. Defaults to 3306
  * @property {string} database - Name of the database to use
  * @property {string} user - User to authenticate as
@@ -72,7 +72,7 @@
  */
 
 /**
- * Policy configuration object that specifies the allowed IP addresses and required headers for accessing the server.
+ * Policy configuration object that specifies the allowed IP addresses and required headers for accessing the httpBackend.
  *
  * @typedef {Object} HttpPolicyConfig
  * @property {string[]} allowedIps - An array of allowed IP addresses as strings.

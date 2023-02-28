@@ -26,7 +26,7 @@ export class AppConfig {
     /**
      * @param {FluxEcoAppConfig} appConfig
      */
-    static async fromAppConfig(appConfig) {
+    static async new(appConfig) {
         return new AppConfig(
             appConfig.endpoints,
             appConfig.endpoints

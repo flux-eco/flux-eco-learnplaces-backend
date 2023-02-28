@@ -24,7 +24,7 @@ export class FluxEcoMysqlActionHandler {
         });
     }
 
-    static new(config) {
+    static async new(config) {
         return new FluxEcoMysqlActionHandler(config)
     }
 
