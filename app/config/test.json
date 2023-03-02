@@ -1,0 +1,10 @@
+{
+  "$schema": "../../../flux-eco-app/app/schema/test.json",
+  "type": "person",
+  "name": "ddd",
+  "demo": {
+    "ddd": {
+      "ddd": ""
+    }
+  }
+}

@@ -1,4 +1,4 @@
-export class Api {
+export class FluxEcoLearnplacesBackendApi {
     /**
      * @param {string, function} boundActions
      */
@@ -9,14 +9,14 @@ export class Api {
     #repositoryTreeHandler
 
     /**
-     * @param {string, function} boundActions
+     * @param {{string, function}} boundActions
      */
     constructor(boundActions) {
         this.#boundActions = boundActions
     }
 
     /**
-     * @param {string, function} boundActions
+     * @param {{string, function}} boundActions
      * @return {Promise<Api>}
      */
     static async new(boundActions) {
