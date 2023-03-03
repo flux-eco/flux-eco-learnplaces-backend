@@ -11,16 +11,16 @@ export class FluxEcoLearnplacesBackendApi {
     /**
      * @param {{string, function}} boundActions
      */
-    constructor(boundActions) {
-        this.#boundActions = boundActions
+    constructor(boundedActions) {
+           this.#boundActions = boundedActions
     }
 
     /**
      * @param {{string, function}} boundActions
-     * @return {Promise<Api>}
+     * @return {Promise<FluxEcoLearnplacesBackendApi>}
      */
-    static async new(boundActions) {
-        return new Api(boundActions);
+    static async new(boundedActions) {
+        return new FluxEcoLearnplacesBackendApi(boundedActions);
     }
 
     /**
@@ -28,7 +28,7 @@ export class FluxEcoLearnplacesBackendApi {
      * @returns {Promise<Object>}
      */
     async getRepositoryTree() {
-
+        return await this.#boundActions.getRepositoryTree();
     }
 
 }

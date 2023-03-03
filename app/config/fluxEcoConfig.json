@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../flux-eco-app/app/schema/flux-eco-app-schema.json",
+  "$schema": "../schema/flux-eco-learnplaces-backend-schema.json",
   "endpoints": {
     "http": {
       "server": {
@@ -8,12 +8,12 @@
       },
       "policies": {
         "authenticatedUsersOnly": {
-          "path": "/",
+          "path": "/test",
           "allowedHeaders": "${SERVER_REQUIRED_HEADERS}",
           "allowedIps": "${SERVER_ALLOWED_IPS}"
         }
       },
-      "static": {
+      "staticFiles": {
         "path": "/public"
       },
       "actions": {
@@ -21,11 +21,6 @@
           "name": "getRepositoryTree",
           "method": "GET",
           "path": "/getRepositoryTree"
-        },
-        "getUserData": {
-          "name": "getUserData",
-          "method": "GET",
-          "path": "/getUserData"
         }
       }
     }
@@ -37,10 +32,44 @@
         "host": "${DATABASE_HOST}",
         "database": "${DATABASE_DATABASE}",
         "password": "${DATABASE_PASSWORD}",
-        "username": "${DATABASE_USERNAME}"
+        "user": "${DATABASE_USER}"
       },
       "boundActions": {
-        "getRepositoryTree": "handleRepositoryTreeQuery"
+        "getRepositoryTree": {
+          "actionName": "queryMysqlDataSource",
+          "actionParameters": {
+            "tableName": "object_data",
+            "joins": [
+              {
+                "tableName": "object_reference",
+                "type": "INNER JOIN",
+                "condition": {
+                  "leftTableField": "object_data.obj_id",
+                  "operator": "=",
+                  "rightTableField": "object_reference.obj_id"
+                }
+              },
+              {
+                "tableName": "tree",
+                "type": "INNER JOIN",
+                "condition": {
+                  "leftTableField": "object_reference.ref_id",
+                  "operator": "=",
+                  "rightTableField": "tree.child"
+                }
+              }
+            ],
+            "queryOptions": {
+              "responseTemplate": {
+                "parent": "parent_id",
+                "id": "obj_id",
+                "data": {
+                    "label": "title"
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

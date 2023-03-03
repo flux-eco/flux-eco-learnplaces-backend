@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://fluxlabs.ch/flux-eco-learnplaces-backend-schema",
+  "allOf": [
+    {
+      "$ref": "../../../flux-eco-app/app/schema/flux-eco-app-schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "bindings": {
+          "$ref": "#/$defs/bindings"
+        }
+      },
+      "required": [
+        "bindings"
+      ]
+    }
+  ],
+  "$defs": {
+    "bindings": {
+      "type": "object",
+      "properties": {
+        "iliasDatabase": {
+          "type": "object",
+          "properties": {
+            "server": {
+              "$ref": "../../../flux-eco-query-actions/app/schemas/flux-eco-query-actions-schema.json#/$defs/server"
+            },
+            "boundActions": {
+              "type": "object",
+              "properties": {
+                "getRepositoryTree": {
+                  "$ref": "../../../flux-eco-query-actions/app/schemas/flux-eco-query-actions-schema.json#/$defs/actions/queryMysqlDataSource"
+                }
+              },
+              "required": [
+                "getRepositoryTree"
+              ]
+            }
+          }
+        },
+        "required": [
+          "boundActions"
+        ]
+      }
+    },
+    "required": [
+      "iliasDatabase"
+    ]
+  }
+}
