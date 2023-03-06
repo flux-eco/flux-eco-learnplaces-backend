@@ -3,22 +3,24 @@
   "$id": "https://fluxlabs.ch/flux-eco-learnplaces-backend-schema",
   "allOf": [
     {
-      "$ref": "../../../flux-eco-app/app/schema/flux-eco-app-schema.json"
-    },
-    {
-      "type": "object",
-      "properties": {
-        "bindings": {
-          "$ref": "#/$defs/bindings"
-        }
-      },
-      "required": [
-        "bindings"
-      ]
+      "$ref": "../../../flux-eco/schemas/flux-eco-app-config-schema.json"
     }
   ],
-  "$defs": {
-    "bindings": {
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "const": "flux-eco-learnplaces-backend"
+    },
+    "inboundsConfig": {
+      "httpBindingConfig": {
+        "$ref": "../../../flux-eco/schemas/binding-schemas/http-schemas/flux-eco-http-binding-config-schema.json"
+      }
+    },
+    "apiConfig": {
+      "$ref": "flux-eco-learnplaces-backend-api-schema.json"
+    },
+    "outboundsConfigs": {
       "type": "object",
       "properties": {
         "iliasDatabase": {
@@ -39,14 +41,9 @@
               ]
             }
           }
-        },
-        "required": [
-          "boundActions"
-        ]
-      }
-    },
-    "required": [
-      "iliasDatabase"
-    ]
+        }
+      },
+      "required": ["iliasDatabase"]
+    }
   }
 }

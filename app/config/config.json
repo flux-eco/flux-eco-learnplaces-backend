@@ -1,31 +1,44 @@
 {
-  "$schema": "../schema/flux-eco-learnplaces-backend-schema.json",
-  "endpoints": {
-    "http": {
+  "$schema": "../schemas/flux-eco-learnplaces-backend-schema.json",
+  "name": "flux-eco-learnplaces-backend",
+  "inboundsConfig": {
+    "httpBindingConfig": {
       "server": {
         "port": "${SERVER_PORT}",
         "host": "${SERVER_HOST}"
       },
       "policies": {
         "authenticatedUsersOnly": {
-          "path": "/test",
+          "path": "/api/TEST",
           "allowedHeaders": "${SERVER_REQUIRED_HEADERS}",
           "allowedIps": "${SERVER_ALLOWED_IPS}"
         }
       },
-      "staticFiles": {
-        "path": "/public"
+      "routes": {
+        "api": {
+          "/api/{pageName}/readPageStructure": {
+            "contentType": "application/json",
+            "parameterNames": [
+              "pageName"
+            ],
+            "actionName": "readPageStructure",
+            "actionType": "requestHandler"
+          }
+        }
       },
-      "actions": {
-        "getRepositoryTree": {
-          "name": "getRepositoryTree",
-          "method": "GET",
-          "path": "/getRepositoryTree"
+      "staticFilesPath": null
+    }
+  },
+  "apiConfig": {
+    "outbounds": {
+      "queryHandler": {
+        "actionName": "handle",
+        "parametersMapping": {
         }
       }
     }
   },
-  "bindings": {
+  "outboundsConfigs": {
     "iliasDatabase": {
       "server": {
         "port": "${DATABASE_PORT}",
@@ -61,10 +74,10 @@
             ],
             "queryOptions": {
               "responseTemplate": {
-                "parent": "parent_id",
-                "id": "obj_id",
+                "parent_id": "parent_id",
+                "node_id": "ref_id",
                 "data": {
-                    "label": "title"
+                  "label": "title"
                 }
               }
             }
