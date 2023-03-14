@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "settings": {
+      "type": "object",
+      "properties": {
+        "flux-eco-query-process-config": {
+          "$ref": "../flux-eco-query-process/schemas/flux-eco-query-process-config-schema.json"
+        }
+      },
+      "required": [
+        "flux-eco-query-process-config"
+      ]
+    }
+  },
+  "required": [
+    "settings"
+  ]
+}

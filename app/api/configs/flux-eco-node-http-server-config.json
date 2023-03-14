@@ -1,0 +1,18 @@
+{
+  "server": {
+    "port": 8200,
+    "host": "localhost"
+  },
+  "policies": null,
+  "routes": {
+    "static": {
+    },
+    "api": {
+      "/api/readMainNavigationState": {
+        "Content-Type": "application/json",
+        "actionName": "readMainNavigationState",
+        "actionType": "requestHandler"
+      }
+    }
+  }
+}

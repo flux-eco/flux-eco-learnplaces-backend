@@ -1,0 +1,84 @@
+{
+  "$schema": "../flux-eco-query-process/schemas/flux-eco-query-process-config-schema.json",
+  "settings": {
+    "server": {
+      "port": "3333",
+      "host": "localhost",
+      "database": "ilias",
+      "password": "sdflk2089234dsfalkj3ED",
+      "user": "ilias"
+    }
+  },
+  "state": {
+    "readMainNavigationQueryProcessState": {
+      "queryDefinition": {
+        "tableName": "object_data",
+        "joins": [
+          {
+            "tableName": "object_reference",
+            "type": "INNER JOIN",
+            "condition": {
+              "leftTableField": "object_data.obj_id",
+              "operator": "=",
+              "rightTableField": "object_reference.obj_id"
+            }
+          },
+          {
+            "tableName": "tree",
+            "type": "INNER JOIN",
+            "condition": {
+              "leftTableField": "object_reference.ref_id",
+              "operator": "=",
+              "rightTableField": "tree.child"
+            }
+          },
+          {
+            "tableName": "container_sorting",
+            "type": "LEFT JOIN",
+            "condition": {
+              "leftTableField": "object_reference.ref_id",
+              "operator": "=",
+              "rightTableField": "container_sorting.child_id"
+            }
+          }
+        ],
+        "where": {
+          "operator": "AND",
+          "conditions": [
+            {
+              "column": "type",
+              "operator": "in",
+              "value": "('crs','cat','xsrl','grp','fld')"
+            },
+            {
+              "column": "deleted",
+              "operator": "is",
+              "value": "null"
+            }
+          ],
+          "orderBy": {
+            "column": "path"
+          }
+        }
+      },
+      "transformationDefintions": {
+        "mapToTreeSettings": {
+          "expandedPerDefault": false,
+          "fieldNameNodeId": "ref_id",
+          "fieldNameParentId": "parent",
+          "fieldNamePosition": "position",
+          "fieldNameType": "type",
+          "mapDataSettings": {
+            "fieldNameLabel": "title"
+          }
+        },
+        "createRootNodeFromMappedNodesSettings": {
+          "usePositionAsChildPropertyKey": true
+        },
+        "filterTreeForASpecificLeafSettings": {
+          "type": "xslr"
+        }
+      }
+    }
+  }
+}
